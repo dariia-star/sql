@@ -1,8 +1,7 @@
-select 
-	ad_date ,
+select  ad_date,
 	campaign_id,
-	sum(spend) as spend ,
-	sum(impressions) as impressions ,
+	sum(spend) as spend,
+	sum(impressions) as impressions,
 	sum(clicks) as clicks,
 	sum(value) as value,
 	sum(spend :: numeric)/sum(clicks) as cpc,
@@ -11,6 +10,6 @@ select
 	(sum(value :: numeric)- sum(spend :: numeric))/ sum(spend) as romi
 from public.facebook_ads_basic_daily fabd 
 where clicks > 0
-group by fabd.ad_date ,
-		fabd.campaign_id 
+group by fabd.ad_date,
+	 fabd.campaign_id 
  ;
